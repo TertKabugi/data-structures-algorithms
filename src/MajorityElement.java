@@ -1,8 +1,7 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class RemovingDuplicatesTwo {
-    public static void main(String args[]){
+public class MajorityElement {
+    public static void main(String[] args) {
         int[] array;
         int n = 0;
         try (Scanner sc = new Scanner(System.in)) {
@@ -28,26 +27,27 @@ public class RemovingDuplicatesTwo {
 
         }
 
-        int k = removeDuplicates(array);
-        assert k == array.length;
-        System.out.println("k = " + k);
-        System.out.println("The new array is: ");
-        for (int i = 0; i < k; i++){
-            System.out.print(array[i] + " ");
-        }
+        // majorityElement(array);
+        System.out.println("The Majority Element is: ");
+        System.out.print(majorityElement(array));
     }
 
-    private static int removeDuplicates(int[] array) {
-        Arrays.sort(array);
-        int k = 0;
-        for (int i = 0; i < array.length; i++){
-            if (k < 2 || array[i] != array[k - 2]) {
-                array[k] = array[i];
-                k++;
+    private static int majorityElement(int[] array) {
+        int i = 0;
+        int n = array.length/2;
+        for (; i < array.length; i++){
+            int count = 0;
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    count++;
+                }
+            }
+            if (count > n){
+               return array[i];
             }
         }
-        return k;
 
+        return 0;
     }
 
 }
