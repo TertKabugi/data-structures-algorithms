@@ -1,9 +1,8 @@
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RemovingDuplicates {
-    public static void main(String args[]) throws IOException {
+public class RemovingDuplicatesTwo {
+    public static void main(String args[]){
         int[] array;
         int n = 0;
         try (Scanner sc = new Scanner(System.in)) {
@@ -34,19 +33,21 @@ public class RemovingDuplicates {
         System.out.println("k = " + k);
         System.out.println("The new array is: ");
         for (int i = 0; i < k; i++){
-            System.out.print(array[i]+ " ");
+            System.out.print(array[i] + " ");
         }
     }
 
     private static int removeDuplicates(int[] array) {
         Arrays.sort(array);
         int k = 0;
-        for (int i = 1; i < array.length; i++){
-            if (array[i] != array[k]) {
-                k++;
+        for (int i = 0; i < array.length; i++){
+            if (k < 1 || array[i] != array[k - 1]) {
                 array[k] = array[i];
+                k++;
             }
         }
-        return k + 1;
+        return k;
+
     }
+
 }
