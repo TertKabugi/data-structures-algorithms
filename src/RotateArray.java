@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class MajorityElement {
-    public static void main(String[] args) {
+public class RotateArray {
+    public static void main(String[] args){
         int[] array;
         int n = 0;
         try (Scanner sc = new Scanner(System.in)) {
@@ -27,27 +27,23 @@ public class MajorityElement {
 
         }
 
-        // majorityElement(array);
-        System.out.println("The Majority Element is: ");
-        System.out.print(majorityElement(array));
-    }
-
-    private static int majorityElement(int[] array) {
-        
-        int n = array.length/2;
-        for (int i = 0; i < array.length; i++){
-            int count = 0;
-            for (int j = 0; j < array.length; j++) {
-                if (array[i] == array[j]) {
-                    count++;
-                }
-            }
-            if (count > n){
-               return array[i];
-            }
+        int k = 4;
+        rotateArray(array, k);
+        System.out.println(
+            "The rotated array = ");
+        for(int i = 0; i<array.length; i++){
+            System.out.print(array[i]+ " ");
         }
-
-        return 0;
     }
 
+    private static void rotateArray(int[] array, int k) {
+        int n = array.length;
+        
+        for (int i = n-k; i < n; i++) {
+            int temp = array[i];
+            array[i] = array[n-k];
+            array[n-k] = temp;
+            i++;
+        }
+    }
 }
