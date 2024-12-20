@@ -27,7 +27,7 @@ public class RotateArray {
 
         }
 
-        int k = 4;
+        int k = 2;
         rotateArray(array, k);
         System.out.println(
             "The rotated array = ");
@@ -38,12 +38,24 @@ public class RotateArray {
 
     private static void rotateArray(int[] array, int k) {
         int n = array.length;
-        
-        for (int i = n-k; i < n; i++) {
-            int temp = array[i];
-            array[i] = array[n-k];
-            array[n-k] = temp;
-            i++;
-        }
+        k %= n;
+        reverseArray(array, 1, n);
+        reverseArray(array, 0, k-1);
+        reverseArray(array, k, n-1);
+
     }
+
+    private static void reverseArray(int[] array, int start, int end) {
+        while (start < end) {
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+            start++;
+            end--;
+        }
+        
+        
+    }
+
+    
 }
