@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BuyAndSellStock {
+public class JumpGame {
     public static void main(String[] args){
         int[] array;
         int n = 0;
@@ -27,30 +27,20 @@ public class BuyAndSellStock {
 
         }
 
-        
-        maxProfit(array);
+        canJump(array);
         System.out.println(
-            "The maximum profit = " + maxProfit(array));
+            "The Result = " + canJump(array));
        
     }
+     public static boolean canJump (int array[]){
+        int goal = array.length - 1;
 
-
-    private static int maxProfit(int[] array) {
-        int minPrice = Integer.MAX_VALUE;
-        int maxProfit = 0;
-
-        for (int price : array){
-            if (price < minPrice) {
-                minPrice = price;
-            }
-            int profit = price - minPrice;
-            if (profit > maxProfit) {
-                maxProfit = profit;
+        for (int i = array.length - 1; i >=0; i--){
+            if (i + array[i] >= goal){
+                goal = i;
             }
         }
         
-
-        return maxProfit;
-    }
-
+        return goal == 0;
+     }
 }
